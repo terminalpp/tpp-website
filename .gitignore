@@ -1,6 +1,2 @@
-documentation/xml/
-documentation/html/
-documentation/_build/
-documentation/_static/
-documentation/_templates/
+_site/
 

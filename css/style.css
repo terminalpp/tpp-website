@@ -1,0 +1,36 @@
+/* Bootstrap customization */
+
+.carousel-inner img {
+    margin: auto;
+}
+
+/* Extra styles */
+
+pre.highlight {
+  background-color:#f8f8f8;
+  border-radius:0.25rem;
+  border-color:#e0e0e0;
+  border-width:1px;
+  border-style:solid;
+  margin-bottom:1rem;
+  padding:0.25rem;
+  margin-left:2rem;
+  margin-right:2rem;
+}
+
+.settings-group {
+  margin-left:5%;
+}
+
+.text-centered {
+  text-align:center;
+}
+
+.h-divider {
+  margin-top:1em;
+  margin-bottom:1em;
+}
+
+.btn-download {
+  margin:1rem;
+}
