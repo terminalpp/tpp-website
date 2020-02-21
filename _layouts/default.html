@@ -45,12 +45,15 @@
                     {% endfor %}
                 </div>
             </li>
+            <!--
             <li class="nav-item">
                 <a class="nav-link" href="/changelog.html">Changelog</a>
             </li>            
+        -->
         </ul>
         <span class="navbar-text">
-            v. {{ site.version }} &nbsp;
+            <a href="https://github.com/terminalpp/terminalpp"><i class="fab fa-github"></i></a>
+            &nbsp; v. 0.5.3
         </span>
         </div>
     </nav>
@@ -62,7 +65,7 @@
         {{ content }}
         
         <!-- footer -->
-        <div class="alert alert-light" role="alert">
+        <div class="footer alert alert-light" role="alert">
             Terminal++ by Petr Maj &copy; 2019 - 2020. Released under the MIT license.
         </div>    
     </div>

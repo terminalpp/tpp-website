@@ -24,3 +24,7 @@ A: Although in early stages of development, `terminalpp` offers many useful conf
 ##### Q: How to report bugs and request features?
 
 A: Please use the [github issues](https://github.com/terminalpp/terminalpp/issues) for both. When reporting a bug, make sure that specify the platform exhaustively (press `A-F1` in the terminal for its about box) and ideally provide a reproducible. For new features, please label the issue as a feature. 
+
+##### Q: Where is the code?
+
+A: `terminalpp` & friends code is available at [Github](https://github.com/terminalpp/terminalpp).
