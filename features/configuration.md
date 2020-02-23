@@ -80,6 +80,12 @@ The following is an example of a settings file with all possible settings, their
         /* Number of columns the non-maximized window should have.
          */
         "cols" : 80,
+        /* Determines whether pasting into terminal should be explicitly confirmed. Allowed
+           values are 'never', 'always', 'multiline'.
+         */
+        "confirmPaste" : "multiline",
+        /* Cursor properties. 
+         */
         "cursor" : {
             "active" : {
                 "codepoint" : 9601,

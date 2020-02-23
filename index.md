@@ -69,7 +69,7 @@ layout: default
 
 <!-- TODO generate this perhaps -->
 
-<h1 class="display-4 text-centered h-divider">Feature Highlights</h1>
+<h1 class="display-4 text-center h-divider">Feature Highlights</h1>
 
 <div class="row row-cols-1 row-cols-md-3">
 
@@ -113,9 +113,9 @@ layout: default
     <div class="card h-100">
       <!-- <img src="..." class="card-img-top" alt="..."> -->
       <div class="card-body">
-        <h5 class="card-title">Clipboard</h5>
+        <h5 class="card-title"><a href="/features/clipboard.html">Clipboard</a></h5>
         <p class="card-text">
-            Bi-directional clipboard. Primary and clipboard buffers on Linux, clipboard and emulated primary buffer in Windows.
+            Bi-directional clipboard. Primary and clipboard buffers on Linux, clipboard and emulated primary buffer in Windows. Paste preview is supported.
         </p>
       </div>
     </div>  
