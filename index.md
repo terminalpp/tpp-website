@@ -5,7 +5,7 @@ layout: default
 
 <h1 class="display-3"><img alt="logo" src="favicon.png" /> Terminal++</h1>
 <p class="lead">
-    <code>terminalpp</code> is a minimalist but powerfull terminal emulator which provides almost identical features and user experience on all major operating systems - Windows, Linux and macOS. 
+    <code>terminalpp</code> is a minimalist but powerful terminal emulator which provides almost identical features and user experience on all major operating systems - Windows, Linux and macOS. 
 </p>
 
 <div class="row justify-content-center">
