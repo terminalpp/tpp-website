@@ -1,5 +1,5 @@
 ---
-title: Terminal++
+title: Privacy Policy
 layout: titled
 ---
 
