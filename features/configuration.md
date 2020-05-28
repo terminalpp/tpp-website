@@ -39,6 +39,9 @@ The following is an example of a settings file with all possible settings, their
        and to detect version changes
      */
     "version" : "0.5.3",
+    /* Release channel to be checked for new version upon start. Leave empty (default) if the check should not be performed.
+     */
+    "versionCheckChannel" : "",
     "session" : {
         /* Determines whether local, or bypass PTY should be used. Useful only for 
            Windows, ignored on other systems.
