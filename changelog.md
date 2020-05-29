@@ -11,7 +11,7 @@ This is huge core refactoring, more robust UI framework, better configuration op
 
 Notable changes:
 
-- breacking changes in the remote files protocol, the corresponding version of `ropen` must be used!
+- breaking changes in the remote files protocol, the corresponding version of `ropen` must be used!
 - double width and double size fonts dropped from the terminal (not from the UI)
 - history gets resized when terminal gets resized
 - inactive cursor properly displayed
