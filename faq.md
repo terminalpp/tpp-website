@@ -11,11 +11,13 @@ A: While there are many good terminal emulators (especially for Linux), very few
 
 ##### Q: What operating systems are supported?
 
-A: Windows 10, Linux and macOS (10.15 and above).
+A: Windows 10, Linux and macOS (10.15 and above). 
+
+> Most likely terminalpp also works on BSD, but this is not tested regularly. 
 
 ##### Q: How can the terminal be installed?
 
-A: For Windows, download the latest `msi` installer from [github releases](https://github.com/terminalpp/terminalpp/releases/latest). On Linux, `deb` and `rpm` packages are provided with releases as well, or `snap` can be used to automatically [install and update](https://snapcraft.io/terminalpp) the terminal. On macOS, download the bundle for latest release on github. 
+A: See [here](/features/installation.html).
 
 ##### Q: How do I configure the terminal?
 

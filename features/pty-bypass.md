@@ -13,7 +13,7 @@ While this makes ConPTY work with both applications using either escape sequence
 
 2. perhaps more importantly, an application can only use the escape sequences understood by the translation layer - a reason why very few Windows terminals actually support mouse. 
 
-### tpp-bypass
+### `tpp-bypass`
 
 [`tpp-bypass`](https://github.com/terminalpp/terminalpp/tree/master/tpp-bypass) is a small Linux program which opens a Linux pseudoterminal to a specified Linux command and then translates that terminal's input, output and events into a standard in and out streams. 
 

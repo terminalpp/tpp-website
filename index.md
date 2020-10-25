@@ -11,9 +11,23 @@ layout: default
 <div class="row justify-content-center">
     <!-- Windows downloads -->
     <div class="btn-group btn-download">
-      <button role="button" class="btn btn-dark btn-lg" onclick="window.location='https://github.com/terminalpp/terminalpp/releases/latest/download/terminalpp.msi'">
+      <button role="button" class="btn btn-dark btn-lg" onclick="window.location='https://www.microsoft.com/store/apps/9NNH6JQFJ7HD'">
           <i class="fab fa-windows"></i> Windows
       </button>
+      <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="https://www.microsoft.com/store/apps/9NNH6JQFJ7HD">Microsoft Store
+            <i class="fab fa-windows"></i>
+        </a>
+        <a class="dropdown-item" href="https://github.com/terminalpp/terminalpp/releases/latest/download/terminalpp.msix">msix installer
+            <i class="fab fa-windows"></i>
+        </a>
+        <a class="dropdown-item" href="https://github.com/terminalpp/terminalpp/releases/latest/download/terminalpp.msi">msi installer
+            <i class="fab fa-windows"></i>
+        </a>
+      </div>
     </div>
     <!-- Linux downloads -->
     <div class="btn-group btn-download">
@@ -77,7 +91,7 @@ layout: default
     <div class="card h-100">
       <!-- <img src="..." class="card-img-top" alt="..."> -->
       <div class="card-body">
-        <h5 class="card-title">Cross-platform</h5>
+        <h5 class="card-title"><a href="/features/installation.html">Cross-platform</a></h5>
         <p class="card-text">
             <code>terminalpp</code> natively supports Windows 10 and Linux and works on macOS via a Qt renderer.
         </p>
@@ -156,5 +170,18 @@ layout: default
       </div>
     </div>  
   </div>
+
+  <div class="col mb-4">
+    <div class="card h-100">
+      <!-- <img src="..." class="card-img-top" alt="..."> -->
+      <div class="card-body">
+        <h5 class="card-title">Sessions</h5>
+        <p class="card-text">
+            <code>terminalpp</code> supports multiple sessions, such as <code>cmd.exe</code>, <code>powershell</code>, <code>wsl</code>, or <code>msys</code>. Reasonable sessions are detected automatically and more can be specified manually.
+        </p>
+      </div>
+    </div>  
+  </div>
+
 
 </div>

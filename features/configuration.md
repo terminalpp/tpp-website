@@ -5,7 +5,7 @@ layout: titled
 
 Configuration of `terminalpp` is done via a JSON file in its configuration directory. Depending on the platform, this is located in:
 
-- `%APPDATA%/terminalpp/settings.json` on Windows
+- `%APPDATA%/terminalpp/settings.json` on Windows (note this folder is virtualized)
 - `~/.config/terminalpp/settings.json` on Linux
 - `~/Library/Application Support/terminalpp/settings.json` on macOS
 
@@ -35,118 +35,287 @@ The following is an example of a settings file with all possible settings, their
 
 ```json
 {
-    /* Version of tpp the settings are intended for, to make sure the settings are useful
-       and to detect version changes
+    /* Version information & checks
      */
-    "version" : "0.5.3",
-    /* Release channel to be checked for new version upon start. Leave empty (default) if the check should not be performed.
+    "version" : {
+        /* Version of tpp the settings are intended for, to make sure the settings are useful and to detect version changes
+         */
+        "version" : "0.7.103",
+        /* Release channel to be checked for new version upon start. Leave empty (default) if the check should not be performed.
+         */
+        "checkChannel" : ""
+    },
+    /* Application specific settings
      */
-    "versionCheckChannel" : "",
-    "session" : {
-        /* Determines whether local, or bypass PTY should be used. Useful only for 
-           Windows, ignored on other systems.
+    "application" : {
+        /* If true, checks that profile shortcuts (if supported on given platform) will be updated at every startup
          */
-        "pty" : "bypass",
-        /* Number of rows the non-maximized window whould have.
+        "checkProfileShortcuts" : true,
+        /* If true, session's working directories are ignored and the current working directory is used instead
          */
-        "rows" : 25,
-        /* Determines whether the window should start fullscreen or not.
+        "useCwdForSessions" : false
+    },
+    /* Telemetry Settings for bug and feature requests reporting
+     */
+    "telemetry" : {
+        /* Directory where to store the telemetry logs
          */
-        "fullscreen" : false,
-        /* Determines the behavior of the session when the attached command terminates.
+        "dir" : "C:\\Users\\peta\\AppData\\Local\\Temp\\terminalpp\\telemetry",
+        /* Names of event kinds that should be captured by the telemetry
          */
-        "waitAfterPtyTerminated" : false,
+        "events" : [
+        ],
+        /* If true, unused telemetry logs are deleted when the application terminates
+         */
+        "deleteAtExit" : true
+    },
+    /* Renderer settings
+     */
+    "renderer" : {
+        /* Maximum FPS
+         */
+        "fps" : 60,
+        /* Font used to render the terminal
+         */
+        "font" : {
+            /* Font to render default size characters
+             */
+            "family" : "Consolas",
+            /* Font to render double width characters
+             */
+            "doubleWidthFamily" : "Consolas",
+            /* Size of the font in pixels at zoom level 1.0
+             */
+            "size" : 18,
+            /* Spacing between lines.
+             */
+            "lineSpacing" : 1,
+            /* Spacing between characters.
+             */
+            "charSpacing" : 1
+        },
+        /* Properties of the terminal window
+         */
+        "window" : {
+            /* Number of columns the non-maximized window should have.
+             */
+            "cols" : 80,
+            /* Number of rows the non-maximized window should have.
+             */
+            "rows" : 25,
+            /* Determines the behavior of the session when the attached command terminates.
+             */
+            "fullscreen" : false,
+            /* Determines the behavior of the session when the attached command terminates.
+             */
+            "waitAfterPtyTerminated" : false,
+            /* Determines the maximum number of lines the terminal will remember in the history of the buffer. If set to 0, terminal history is disabled.
+             */
+            "historyLimit" : 10000
+        }
+    },
+    /* Behavior customization for terminal escape sequences (VT100)
+     */
+    "sequences" : {
+        /* Determines whether pasting into terminal should be explicitly confirmed. Allowed values are 'never', 'always', 'multiline'.
+         */
+        "confirmPaste" : "multiline",
+        /* If true, bold text is rendered in bright colors.
+         */
+        "boldIsBright" : true,
+        /* Determines whether terminal applications can set local clipboard. Allowed values are 'allow', 'deny' and 'ask'
+         */
+        "allowClipboardUpdate" : "allow"
+    },
+    /* Default values for session properties. These will be used when a session does not override the values
+     */
+    "sessionDefaults" : {
+        /* Determines whether local, or bypass PTY should be used. Useful only for Windows, ignored on other systems.
+         */
+        "pty" : "local",
+        /* Definition of the palette used for the session.
+         */
         "palette" : {
-            /* Overrides the predefined palette. Up to 256 colors can be specified in HTML
-               format. These colors will override the default xterm palette used.
+            /* Overrides the predefined palette. Up to 256 colors can be specified in HTML format. These colors will override the default xterm palette used.
              */
             "colors" : [
             ],
             /* Specifies the index of the default foreground color in the palette.
              */
-            "defaultForeground" : 15,
+            "defaultForeground" : "#ffffff",
             /* Specifies the index of the default background color in the palette.
              */
-            "defaultBackground" : 0
+            "defaultBackground" : "#000000"
         },
-        /* The command to execute in the session.
-         */
-        "command" : [
-            "wsl.exe",
-            "--",
-            "~/.local/bin/tpp-bypass"
-        ],
-        /* Determines the maximum number of lines the terminal will remember in the
-           history of the buffer. If set to 0, terminal history is disabled.
-         */
-        "historyLimit" : 10000,
-        /* Number of columns the non-maximized window should have.
-         */
-        "cols" : 80,
-        /* Determines whether pasting into terminal should be explicitly confirmed. Allowed
-           values are 'never', 'always', 'multiline'.
-         */
-        "confirmPaste" : "multiline",
-        /* Cursor properties. 
+        /* Cursor properties
          */
         "cursor" : {
-            "active" : {
-                "codepoint" : 9601,
-                "color" : "#ffffff",
-                "blink" : true
+            /* UTF codepoint of the cursor
+             */
+            "codepoint" : 9601,
+            /* Color of the cursor
+             */
+            "color" : "#ffffff",
+            /* Determines whether the cursor blinks or not.
+             */
+            "blink" : true,
+            /* Color of the rectangle showing the cursor position when not focused.
+             */
+            "inactiveColor" : "#00ff00"
+        }
+    },
+    /* Settings for opening remote files from the terminal locally.
+     */
+    "remoteFiles" : {
+        /* Directory to which the remote files should be downloaded. If empty, temporary directory will be used.
+         */
+        "dir" : "C:\\Users\\peta\\AppData\\Local\\Temp\\terminalpp\\remoteFiles"
+    },
+    /* Name of the default session which will be opened when terminal starts
+     */
+    "defaultSession" : "Ubuntu-18.04",
+    /* List of known sessions
+     */
+    "sessions" : [
+        /* cmd.exe
+         */
+        {
+            "name" : "cmd.exe",
+            /* Determines whether local, or bypass PTY should be used. Useful only for Windows, ignored on other systems.
+             */
+            "pty" : "local",
+            /* Definition of the palette used for the session.
+             */
+            "palette" : {
+                /* Overrides the predefined palette. Up to 256 colors can be specified in HTML format. These colors will override the default xterm palette used.
+                 */
+                "colors" : [
+                ],
+                /* Specifies the index of the default foreground color in the palette.
+                 */
+                "defaultForeground" : "#ffffff",
+                /* Specifies the index of the default background color in the palette.
+                 */
+                "defaultBackground" : "#000000"
             },
-            "inactive" : {
+            "command" : [
+                "cmd.exe"
+            ],
+            "workingDirectory" : "C:\\Users\\peta",
+            /* Cursor properties
+             */
+            "cursor" : {
+                /* UTF codepoint of the cursor
+                 */
                 "codepoint" : 9601,
-                "color" : "#808080",
-                "blink" : false
+                /* Color of the cursor
+                 */
+                "color" : "#ffffff",
+                /* Determines whether the cursor blinks or not.
+                 */
+                "blink" : true,
+                /* Color of the rectangle showing the cursor position when not focused.
+                 */
+                "inactiveColor" : "#00ff00"
             }
         },
-        "remoteFiles" : {
-            /* Directory to which the remote files should be downloaded. If empty,
-               temporary directory will be used.
+        /* Powershell - with the default blue background and white text
+         */
+        {
+            "name" : "powershell",
+            /* Determines whether local, or bypass PTY should be used. Useful only for Windows, ignored on other systems.
              */
-            "dir" : "C:\\Users\\peta\\AppData\\Local\\Temp\\terminalpp\\remoteFiles"
-        },
-        "sequences" : {
-            /* If true, bold text is rendered in bright colors.
+            "pty" : "local",
+            "palette" : {
+                /* Overrides the predefined palette. Up to 256 colors can be specified in HTML format. These colors will override the default xterm palette used.
+                 */
+                "colors" : [
+                ],
+                "defaultForeground" : "ffffff",
+                "defaultBackground" : "#0000ff"
+            },
+            "command" : [
+                "powershell.exe"
+            ],
+            "workingDirectory" : "C:\\Users\\peta",
+            /* Cursor properties
              */
-            "boldIsBright" : true
+            "cursor" : {
+                /* UTF codepoint of the cursor
+                 */
+                "codepoint" : 9601,
+                /* Color of the cursor
+                 */
+                "color" : "#ffffff",
+                /* Determines whether the cursor blinks or not.
+                 */
+                "blink" : true,
+                /* Color of the rectangle showing the cursor position when not focused.
+                 */
+                "inactiveColor" : "#00ff00"
+            }
         },
-        /* File to which all terminal input should be logged.
+        /* WSL distribution Ubuntu-18.04 (default)
          */
-        "log" : ""
-    },
-    "log" : {
-        /* Directory where to keep the log files.
-         */
-        "dir" : "C:\\Users\\peta\\AppData\\Local\\Temp\\terminalpp",
-        /* Maximum number of log files that are to be kept.
-         */
-        "maxFiles" : 100
-    },
-    "renderer" : {
-        /* Maximum FPS.
-         */
-        "fps" : 60
-    },
-    "font" : {
-        "family" : "Iosevka Term",
-        "doubleWidthFamily" : "SpaceMono NF",
-        "size" : 18
-    }
+        {
+            "name" : "Ubuntu-18.04",
+            "pty" : "bypass",
+            /* Definition of the palette used for the session.
+             */
+            "palette" : {
+                /* Overrides the predefined palette. Up to 256 colors can be specified in HTML format. These colors will override the default xterm palette used.
+                 */
+                "colors" : [
+                ],
+                /* Specifies the index of the default foreground color in the palette.
+                 */
+                "defaultForeground" : "#ffffff",
+                /* Specifies the index of the default background color in the palette.
+                 */
+                "defaultBackground" : "#000000"
+            },
+            "command" : [
+                "wsl.exe",
+                "--distribution",
+                "Ubuntu-18.04",
+                "--",
+                "~/.local/bin/tpp-bypass"
+            ],
+            "workingDirectory" : "C:\\Users\\peta",
+            /* Cursor properties
+             */
+            "cursor" : {
+                /* UTF codepoint of the cursor
+                 */
+                "codepoint" : 9601,
+                /* Color of the cursor
+                 */
+                "color" : "#ffffff",
+                /* Determines whether the cursor blinks or not.
+                 */
+                "blink" : true,
+                /* Color of the rectangle showing the cursor position when not focused.
+                 */
+                "inactiveColor" : "#00ff00"
+            }
+        },
+        }
+    ]
 }
 ```
+
 ### Command-line arguments
 
 The following command-line arguments can be used to override the global configuration settings for the particular execution:
 
+- `--here` makes the terminal start in current folder instead of the folder provided in the configuration 
+- `--session` overides which session will start
 - `--pty` sets the PTY used (`session.pty`)
 - `--fps` sets the renderer's maximum FPS rate (`renderer.fps`)
 - `--cols, -c` sets the number of columns for the terminal window (`session.cols`)
 - `--rows, -r` sets the number of rows for the terminal window (`session.rows`)
 - `--font` sets the default font family (`font.family`)
 - `--font-size` sets the size of the font in pixels (`font.size`)
-- `--log-file` sets the log file to which the input (displayed data) of the session will be stored (`session.log`) (only useful for debug purposes)
 - `-e` specifies the command (`session.command`), all arguments after `-e` are considered parts of the command to execute
 
 The arguments can be specified either using the `--arg=value`, or `--arg value` notation, i.e:
