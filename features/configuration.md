@@ -40,27 +40,22 @@ The following is an example of a settings file with all possible settings, their
     "version" : {
         /* Version of tpp the settings are intended for, to make sure the settings are useful and to detect version changes
          */
-        "version" : "0.7.103",
+        "version" : "0.8.0",
         /* Release channel to be checked for new version upon start. Leave empty (default) if the check should not be performed.
          */
         "checkChannel" : ""
     },
-    /* Application specific settings
-     */
     "application" : {
         /* If true, checks that profile shortcuts (if supported on given platform) will be updated at every startup
          */
-        "checkProfileShortcuts" : true,
-        /* If true, session's working directories are ignored and the current working directory is used instead
-         */
-        "useCwdForSessions" : false
+        "detectSessionsAtStartup" : true
     },
     /* Telemetry Settings for bug and feature requests reporting
      */
     "telemetry" : {
         /* Directory where to store the telemetry logs
          */
-        "dir" : "C:\\Users\\peta\\AppData\\Local\\Temp\\terminalpp\\telemetry",
+        "dir" : "C:\\Users\\petam\\AppData\\Local\\Temp\\terminalpp\\telemetry",
         /* Names of event kinds that should be captured by the telemetry
          */
         "events" : [
@@ -80,22 +75,26 @@ The following is an example of a settings file with all possible settings, their
         "font" : {
             /* Font to render default size characters
              */
-            "family" : "Consolas",
+            "family" : "Iosevka Term",
+            /* Font to render bold characters, if different from normal font
+             */
+            "boldFamily" : "",
             /* Font to render double width characters
              */
-            "doubleWidthFamily" : "Consolas",
+            "doubleWidthFamily" : "Iosevka Term",
             /* Size of the font in pixels at zoom level 1.0
              */
             "size" : 18,
             /* Spacing between lines.
              */
             "lineSpacing" : 1,
+            /* Font to render bold double width characters, if different from doubleWidth font
+             */
+            "doubleWidthBoldFamily" : "",
             /* Spacing between characters.
              */
             "charSpacing" : 1
         },
-        /* Properties of the terminal window
-         */
         "window" : {
             /* Number of columns the non-maximized window should have.
              */
@@ -114,8 +113,6 @@ The following is an example of a settings file with all possible settings, their
             "historyLimit" : 10000
         }
     },
-    /* Behavior customization for terminal escape sequences (VT100)
-     */
     "sequences" : {
         /* Determines whether pasting into terminal should be explicitly confirmed. Allowed values are 'never', 'always', 'multiline'.
          */
@@ -125,16 +122,15 @@ The following is an example of a settings file with all possible settings, their
         "boldIsBright" : true,
         /* Determines whether terminal applications can set local clipboard. Allowed values are 'allow', 'deny' and 'ask'
          */
-        "allowClipboardUpdate" : "allow"
+        "allowClipboardUpdate" : "allow",
+        /* If true bold font will be used when appropriate.
+         */
+        "displayBold" : true
     },
-    /* Default values for session properties. These will be used when a session does not override the values
-     */
     "sessionDefaults" : {
         /* Determines whether local, or bypass PTY should be used. Useful only for Windows, ignored on other systems.
          */
         "pty" : "local",
-        /* Definition of the palette used for the session.
-         */
         "palette" : {
             /* Overrides the predefined palette. Up to 256 colors can be specified in HTML format. These colors will override the default xterm palette used.
              */
@@ -147,8 +143,6 @@ The following is an example of a settings file with all possible settings, their
              */
             "defaultBackground" : "#000000"
         },
-        /* Cursor properties
-         */
         "cursor" : {
             /* UTF codepoint of the cursor
              */
@@ -169,7 +163,7 @@ The following is an example of a settings file with all possible settings, their
     "remoteFiles" : {
         /* Directory to which the remote files should be downloaded. If empty, temporary directory will be used.
          */
-        "dir" : "C:\\Users\\peta\\AppData\\Local\\Temp\\terminalpp\\remoteFiles"
+        "dir" : "C:\\Users\\petam\\AppData\\Local\\Temp\\terminalpp\\remoteFiles"
     },
     /* Name of the default session which will be opened when terminal starts
      */
@@ -181,11 +175,12 @@ The following is an example of a settings file with all possible settings, their
          */
         {
             "name" : "cmd.exe",
+            /* Can hide the session from menus, such as the jumplist. Hidden session can still be explicitly started via the --session argument
+             */
+            "hidden" : false,
             /* Determines whether local, or bypass PTY should be used. Useful only for Windows, ignored on other systems.
              */
             "pty" : "local",
-            /* Definition of the palette used for the session.
-             */
             "palette" : {
                 /* Overrides the predefined palette. Up to 256 colors can be specified in HTML format. These colors will override the default xterm palette used.
                  */
@@ -201,9 +196,7 @@ The following is an example of a settings file with all possible settings, their
             "command" : [
                 "cmd.exe"
             ],
-            "workingDirectory" : "C:\\Users\\peta",
-            /* Cursor properties
-             */
+            "workingDirectory" : "C:\\Users\\petam",
             "cursor" : {
                 /* UTF codepoint of the cursor
                  */
@@ -223,6 +216,9 @@ The following is an example of a settings file with all possible settings, their
          */
         {
             "name" : "powershell",
+            /* Can hide the session from menus, such as the jumplist. Hidden session can still be explicitly started via the --session argument
+             */
+            "hidden" : false,
             /* Determines whether local, or bypass PTY should be used. Useful only for Windows, ignored on other systems.
              */
             "pty" : "local",
@@ -237,9 +233,7 @@ The following is an example of a settings file with all possible settings, their
             "command" : [
                 "powershell.exe"
             ],
-            "workingDirectory" : "C:\\Users\\peta",
-            /* Cursor properties
-             */
+            "workingDirectory" : "C:\\Users\\petam",
             "cursor" : {
                 /* UTF codepoint of the cursor
                  */
@@ -259,9 +253,10 @@ The following is an example of a settings file with all possible settings, their
          */
         {
             "name" : "Ubuntu-18.04",
-            "pty" : "bypass",
-            /* Definition of the palette used for the session.
+            /* Can hide the session from menus, such as the jumplist. Hidden session can still be explicitly started via the --session argument
              */
+            "hidden" : false,
+            "pty" : "bypass",
             "palette" : {
                 /* Overrides the predefined palette. Up to 256 colors can be specified in HTML format. These colors will override the default xterm palette used.
                  */
@@ -281,9 +276,7 @@ The following is an example of a settings file with all possible settings, their
                 "--",
                 "~/.local/bin/tpp-bypass"
             ],
-            "workingDirectory" : "C:\\Users\\peta",
-            /* Cursor properties
-             */
+            "workingDirectory" : "C:\\Users\\petam",
             "cursor" : {
                 /* UTF codepoint of the cursor
                  */
@@ -299,7 +292,6 @@ The following is an example of a settings file with all possible settings, their
                 "inactiveColor" : "#00ff00"
             }
         },
-        }
     ]
 }
 ```
