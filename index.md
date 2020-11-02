@@ -177,7 +177,7 @@ layout: default
       <div class="card-body">
         <h5 class="card-title">Sessions</h5>
         <p class="card-text">
-            <code>terminalpp</code> supports multiple sessions, such as <code>cmd.exe</code>, <code>powershell</code>, <code>wsl</code>, or <code>msys</code>. Reasonable sessions are detected automatically and more can be specified manually.
+            <code>terminalpp</code> supports multiple sessions, such as <code>cmd.exe</code>, <code>powershell</code>, <code>wsl</code>, or <code>msys</code>. Common sessions are detected automatically and more can be specified manually.
         </p>
       </div>
     </div>  

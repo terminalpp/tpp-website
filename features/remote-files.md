@@ -11,13 +11,11 @@ When working in a terminal it is often useful to view non-text based files, such
 
 ### Installation
 
-`deb` and `rpm` packages are provided on the [release](https://github.com/terminalpp/terminalpp/releases/latest) page as well as a snap application. 
+`deb` and `rpm` packages are provided on the [release](https://github.com/terminalpp/terminalpp/releases/latest) page as well as a [snap application](https://snapcraft.io/ropen).
 
-<!-- Install the packages, e.g. for snap just run:
+To install `ropen` via snap, simply execute the following:
 
-    snap install ropen --edge --classic
-
--->
+    sudo snap install ropen --edge --classic
 
 ### Usage
 
@@ -40,7 +38,7 @@ If file of same name (relative path on the remote host from the `ropen` command)
 
 ### Settings
 
-Remote files are by default stored in a temporary directory, but the [configuration](/features/configuration.html) file may overwrite their location to any existing directory in the `session.remoteFiles.dir` option.
+Remote files are by default stored in a temporary directory, but the [configuration](/features/configuration.html) file may overwrite their location to any existing directory in the `remoteFiles.dir` option.
 
 This has the advantage of having all the remotely opened files easily accessible from the local machine by other programs as well.
 
