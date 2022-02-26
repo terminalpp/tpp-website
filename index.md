@@ -62,6 +62,9 @@ layout: default
 <div id="carouselExampleFade" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
+      <img src="resources/screenshots/ukraine.png" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
       <img src="resources/screenshots/windows.png" class="d-block" alt="...">
     </div>
     <div class="carousel-item">
